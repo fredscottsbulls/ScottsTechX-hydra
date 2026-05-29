@@ -1,67 +1,48 @@
-# ScottsTechX-hydra
+# 💥 ScottsTechX Hydra
 
-🔐 Pentesting Tool | Part of ScottsTechX Tool Suite
+<p align="center">
+  <img src="https://img.shields.io/badge/Hydra-Login-Cracker-00ff88?style=for-the-badge&logo=linux&logoColor=black" alt="Hydra"/>
+  <img src="https://img.shields.io/badge/Open-Source-00ff88?style=for-the-badge&logo=github&logoColor=black" alt="Open Source"/>
+</p>
 
----
-
-## About
-
-**Network login cracker - brute force SSH, FTP, HTTP login credentials**
-
-Official ScottsTechX tool repo — part of the [ScottsTechX Tool Installer](https://github.com/fredscottsbulls/ScottsTechX-Tool-Installer) suite.
-
-**Official Website:** https://github.com/vanhauser-thc/thc-hydra
+> **Network login brute-forcer — crack SSH, FTP, HTTP, SMB, and 50+ protocols.**
 
 ---
 
-## Quick Install
+## ⚡ What It Does
 
-### Via ScottsTechX Tool Installer:
+Hydra performs rapid parallel brute-force attacks against login services — test password strength, audit authentication systems, recover forgotten passwords.
+
+**For authorized testing only.**
+
+## 🚀 Quick Usage
 
 ```bash
-scotts-techx install hydra
+# SSH brute force
+hydra -l admin -P passwords.txt ssh://target.com
+
+# FTP login
+hydra -l ftp -P wordlist.txt ftp://target.com
+
+# HTTP Form POST
+hydra -l admin -P passwords.txt target.com http-post-form "/login:user=^USER^&pass=^PASS^:F=Invalid"
+
+# Parallel attack (32 tasks)
+hydra -l admin -P passwords.txt -t 32 ssh://target.com
+
+# Username list + password list
+hydra -L users.txt -P passwords.txt smb://target.com
 ```
 
-### Manual Install:
+## 🎯 Common Targets
 
-```bash
-# Linux/macOS/Git Bash
-curl -fsSL https://raw.githubusercontent.com/fredscottsbulls/ScottsTechX-hydra/main/install.sh | bash
-
-# Windows PowerShell
-irm https://raw.githubusercontent.com/fredscottsbulls/ScottsTechX-hydra/main/install.ps1 | iex
-```
-
----
-
-## What is HYDRA?
-
-Network login cracker - brute force SSH, FTP, HTTP login credentials.
-
-For full documentation: https://github.com/vanhauser-thc/thc-hydra
+| Service | Command |
+|---------|---------|
+| SSH | `hydra -l user -P pass.txt ssh://target` |
+| FTP | `hydra -l user -P pass.txt ftp://target` |
+| HTTP | `hydra -l user -P pass.txt http-get://target` |
+| SMB | `hydra -l user -P pass.txt smb://target` |
 
 ---
 
-## ScottsTechX Tool Suite (30 tools)
-
-| Category | Tools |
-|----------|-------|
-| Simple CLI | nmap, curl, wget, jq, git, python3, ffmpeg, traceroute, netcat, openssh |
-| Pentesting | hydra, sqlmap, nikto, hashcat, gobuster, searchsploit, masscan, burpsuite, ncat, Responder |
-| DevOps | docker, vim, htop, tmux, tar, make, openssl, ansible, kubectl, terraform |
-
-**[View Full Suite](https://github.com/fredscottsbulls/ScottsTechX-Tool-Installer)**
-
----
-
-## Disclaimer
-
-**For authorized use only.** Unauthorized access to computer systems is illegal.
-
----
-
-<div align="center">
-
-**ScottsTechX** | Fred Scotts | https://github.com/fredscottsbulls
-
-</div>
+MIT © 2026
